@@ -12,32 +12,56 @@
 public class TicketMachine
 {
     // The price of a ticket from this machine.
-    private int price;
+    private Integer price;
     // The amount of money entered by a customer so far.
-    private int balance;
+    private Integer balance;
     // The total amount of money collected by this machine.
-    private int total;
+    private Integer total;
 
     /**
-     * Create a machine that issues tickets of the given price.
+     * Create a machine that issues tickets o f the given price.
      * Note that the price must be greater than zero, and there
      * are no checks to ensure this.
      */
-    public TicketMachine(int ticketCost)
+    public TicketMachine()
     {
-        price = ticketCost;
+        this(1000);
+    }
+    
+    public TicketMachine(int ticketPrice)
+    {
         balance = 0;
         total = 0;
+        price = ticketPrice;
     }
-
+    
+    
+    public void promt()
+    {
+        System.out.println("Please insert the correct amount of money."); 
+        
+    }
+    
+    public void setPrice(int ticketCost)
+    {   
+        price = ticketCost;
+    }
+    
+    public void empty()
+    {
+        total = 0;
+    }
+    
+    
     /**
      * Return the price of a ticket.
      */
-    public int getPrice()
+    public int getPrice() 
     {
         return price;
     }
-
+       
+    
     /**
      * Return the amount of money already inserted for the
      * next ticket.
@@ -53,8 +77,19 @@ public class TicketMachine
     public void insertMoney(int amount)
     {
         balance = balance + amount;
+    } 
+    
+    public void showPrice()
+    {
+        System.out.println("The price of the ticket is " + price + " cents.");
     }
 
+    public int getTotal()
+    {
+        return total;
+    }
+    
+    
     /**
      * Print a ticket.
      * Update the total collected and
@@ -75,4 +110,5 @@ public class TicketMachine
         // Clear the balance.
         balance = 0;
     }
+    
 }
